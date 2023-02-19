@@ -23,6 +23,11 @@
 		F0AF75CE29A119BF00FA50BF /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */; };
 		F0AF75D129A24F3200FA50BF /* MockedImageShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */; };
 		F0AF75D429A24F8100FA50BF /* MockedLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */; };
+		F0AF75D729A27C1500FA50BF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AF75D629A27C1500FA50BF /* Dependencies */; };
+		F0AF75D929A27E6200FA50BF /* MockedImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */; };
+		F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */; };
+		F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */; };
+		F0AF75DF29A28A3800FA50BF /* MockedDownloadImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DE29A28A3800FA50BF /* MockedDownloadImageUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,10 @@
 		F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedImageShowViewModel.swift; sourceTree = "<group>"; };
 		F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedLoginViewModel.swift; sourceTree = "<group>"; };
+		F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedImageRepository.swift; sourceTree = "<group>"; };
+		F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCase.swift; sourceTree = "<group>"; };
+		F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCase.swift; sourceTree = "<group>"; };
+		F0AF75DE29A28A3800FA50BF /* MockedDownloadImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedDownloadImageUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AF75D729A27C1500FA50BF /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				F00AAF2429A03B26006A3D84 /* LoginViewModel.swift */,
+				F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -206,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				F0AF75C729A1101A00FA50BF /* ImageShowViewModel.swift */,
+				F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */,
 			);
 			path = "Domain ";
 			sourceTree = "<group>";
@@ -214,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */,
+				F0AF75DE29A28A3800FA50BF /* MockedDownloadImageUseCase.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -222,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */,
+				F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -242,6 +256,9 @@
 			dependencies = (
 			);
 			name = Ficek_Cleverlance;
+			packageProductDependencies = (
+				F0AF75D629A27C1500FA50BF /* Dependencies */,
+			);
 			productName = Ficek_Cleverlance;
 			productReference = F00AAEF329A02F2F006A3D84 /* Ficek_Cleverlance.app */;
 			productType = "com.apple.product-type.application";
@@ -314,6 +331,9 @@
 				Base,
 			);
 			mainGroup = F00AAEEA29A02F2F006A3D84;
+			packageReferences = (
+				F0AF75D529A27C1500FA50BF /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+			);
 			productRefGroup = F00AAEF429A02F2F006A3D84 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -356,13 +376,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0AF75D929A27E6200FA50BF /* MockedImageRepository.swift in Sources */,
 				F00AAF2729A057A4006A3D84 /* SecureInputView.swift in Sources */,
 				F00AAF2D29A0598C006A3D84 /* MainView.swift in Sources */,
 				F0AF75CE29A119BF00FA50BF /* ApiResponse.swift in Sources */,
 				F00AAF2129A03A92006A3D84 /* ImageRepository.swift in Sources */,
 				F00AAF2329A03AB7006A3D84 /* LoginView.swift in Sources */,
+				F0AF75DF29A28A3800FA50BF /* MockedDownloadImageUseCase.swift in Sources */,
 				F0AF75C829A1101A00FA50BF /* ImageShowViewModel.swift in Sources */,
 				F0AF75D129A24F3200FA50BF /* MockedImageShowViewModel.swift in Sources */,
+				F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */,
+				F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */,
 				F0AF75C629A1100700FA50BF /* ImageShowView.swift in Sources */,
 				F0AF75D429A24F8100FA50BF /* MockedLoginViewModel.swift in Sources */,
 				F00AAF2529A03B26006A3D84 /* LoginViewModel.swift in Sources */,
@@ -691,6 +715,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F0AF75D529A27C1500FA50BF /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F0AF75D629A27C1500FA50BF /* Dependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F0AF75D529A27C1500FA50BF /* XCRemoteSwiftPackageReference "swift-dependencies" */;
+			productName = Dependencies;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F00AAEEB29A02F2F006A3D84 /* Project object */;
 }

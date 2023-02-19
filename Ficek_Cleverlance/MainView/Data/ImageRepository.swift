@@ -21,10 +21,10 @@ struct ImageRepository: ImageRepositoryType {
                 .eraseToAnyPublisher()
         }
         
-        let inputData = Data(username.lowercased().utf8)
-        var hashedUsername = Insecure.SHA1.hash(data: inputData).description
-        hashedUsername.removeFirst(13)
-        
+        let inputData = username.lowercased().data(using: .utf8)
+        let hashed = Insecure.SHA1.hash(data: inputData!)
+        let hashedUsername = hashed.compactMap { String(format: "%02x", $0) }.joined()
+         
         return Just(username)
             .encode(encoder: JSONEncoder())
         //            .mapError { _ in
@@ -53,7 +53,7 @@ struct ImageRepository: ImageRepositoryType {
                     .decode(type: ApiResponse.self, decoder: JSONDecoder())
             }
             .mapError { error -> ResponseError in
-                error as? ResponseError ?? .inetrnalError
+                error as? ResponseError ?? .internalError
             }
             .eraseToAnyPublisher()
     }

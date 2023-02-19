@@ -27,22 +27,22 @@ final class LoginViewModel: LoginViewModelType {
     @Published var wrongData: String = ""
     @Published var imageString: String
     @Published var progressViewOpacity: Double
-    let imageRepository: ImageRepositoryType
+    let fetchImageUseCase: FetchImageUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
-    init(isLogged: Bool = false, login: String = "", password: String = "", imageRepository: ImageRepositoryType, imageString: String = "", progressViewOpacity: Double = 0) {
+    init(isLogged: Bool = false, login: String = "", password: String = "", imageString: String = "", progressViewOpacity: Double = 0, fetchImageUseCase: FetchImageUseCaseType) {
         self.isLogged = isLogged
         self.login = login
         self.password = password
-        self.imageRepository = imageRepository
         self.imageString = imageString
         self.progressViewOpacity = progressViewOpacity
+        self.fetchImageUseCase = fetchImageUseCase
         
     }
     
     func loginButtonDidTapped() {
         progressViewOpacity = 100
-        imageRepository.fetchImage(username: login, password: password)
+        fetchImageUseCase.fetchImage(username: login, password: password)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [weak self] completion in
@@ -69,6 +69,6 @@ final class LoginViewModel: LoginViewModelType {
 }
 
 extension LoginViewModelType where Self == LoginViewModel {
-    static var live: Self { Self(imageRepository: .live) }
+    static var live: Self { Self(fetchImageUseCase: .live) }
 }
 

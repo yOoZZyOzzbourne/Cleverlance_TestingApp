@@ -42,7 +42,7 @@ struct LoginView<vm: LoginViewModelType>: View {
         }
         .sheet(isPresented: $viewModel.isLogged) {
             NavigationStack {
-                ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString))
+                ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString, downloadImageUseCase: .live))
             }
         }
         .padding()
@@ -51,6 +51,6 @@ struct LoginView<vm: LoginViewModelType>: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: .mock)
+        LoginView(viewModel: LoginViewModel(fetchImageUseCase: .mock))
     }
 }

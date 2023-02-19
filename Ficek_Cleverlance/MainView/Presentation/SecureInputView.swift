@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct SecureInputView: View {
-    
     @Binding private var text: String
     @State private var isSecured: Bool = true
     private var title: String

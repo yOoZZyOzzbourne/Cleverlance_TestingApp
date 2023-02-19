@@ -17,25 +17,27 @@ protocol ImageShowViewModelType: ObservableObject {
 }
 
 final class ImageShowViewModel: ImageShowViewModelType {
-    
+    let downloadImageUseCase: DownloadImageUseCaseType
     var imageString: String
     @Published var imageBase64: Image
     
-    init(imageString: String = "", imageBase64: Image = Image(systemName: "sun.fill")) {
+    init(imageString: String = "", imageBase64: Image = Image(systemName: "sun.fill"), downloadImageUseCase: DownloadImageUseCaseType) {
         self.imageString = imageString
         self.imageBase64 = imageBase64
+        self.downloadImageUseCase = downloadImageUseCase
     }
     
     func downloadButtonTapped() {
-        guard let stringData = Data(base64Encoded: imageString),
-              let uiImage = UIImage(data: stringData) else {
-            print("Error: couldn't create UIImage")
-            return }
-        
-        imageBase64 = Image(uiImage: uiImage)
+       imageBase64 = downloadImageUseCase.downloadImage(imageString: imageString)
+//        guard let stringData = Data(base64Encoded: imageString),
+//              let uiImage = UIImage(data: stringData) else {
+//            print("Error: couldn't create UIImage")
+//            return }
+//
+//        imageBase64 = Image(uiImage: uiImage)
     }
 }
 
 extension ImageShowViewModelType where Self == ImageShowViewModel {
-    static var live: Self { Self() }
+    static var live: Self { Self(downloadImageUseCase: .live) }
 }
