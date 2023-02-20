@@ -12,10 +12,17 @@ struct ImageShowView<vm: ImageShowViewModelType>: View {
     
     var body: some View {
         VStack {
+            Text("Image preview")
+                .font(.largeTitle)
+                .padding(.top,60)
+              
+            Spacer()
+            
             viewModel.imageBase64
                 .resizable()
                 .scaledToFit()
-                .padding(.top, 50)
+                .shadow(color: .secondary.opacity(0.2), radius: 5)
+                .padding()
             
             Spacer()
             
@@ -27,7 +34,7 @@ struct ImageShowView<vm: ImageShowViewModelType>: View {
                     Text("Download Image")
                         .foregroundColor(.white)
                         .padding(10)
-                        .background(Color.teal)
+                        .background(Color.green)
                         .cornerRadius(10)
                         .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
                 }
@@ -39,7 +46,7 @@ struct ImageShowView<vm: ImageShowViewModelType>: View {
 
 struct ImageShowView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageShowView(viewModel: .mock)
+        ImageShowView(viewModel: ImageShowViewModel(downloadImageUseCase: .mock))
     }
 }
 

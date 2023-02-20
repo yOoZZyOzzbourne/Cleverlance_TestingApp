@@ -12,7 +12,7 @@ struct ApiResponse: Decodable {
 }
 
 enum ResponseError: Error {
-    case inetrnalError
+    case internalError
     case unauthorized
     case badUrl
 }
