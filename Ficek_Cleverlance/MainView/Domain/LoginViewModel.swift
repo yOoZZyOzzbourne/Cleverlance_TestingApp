@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import SwiftUI
+import Dependencies
 
 protocol LoginViewModelType: ObservableObject {
     var username: String { get set }
@@ -22,6 +23,7 @@ protocol LoginViewModelType: ObservableObject {
 }
 
 final class LoginViewModel: LoginViewModelType {
+    
     @Published var username: String
     @Published var password: String
     @Published var isLogged: Bool

@@ -11,41 +11,46 @@ struct LoginView<vm: LoginViewModelType>: View {
     @ObservedObject var viewModel: vm
     
     var body: some View {
-        VStack {
-            Group {
-                TextField("Zadejte jméno", text: $viewModel.username)
-                    .autocorrectionDisabled()
-                SecureInputView("Zadejte heslo",text: $viewModel.password)
-            }
-            .textFieldStyle(.roundedBorder)
-            
-            Text(viewModel.wrongData)
-            
-            Button(
-                action: {
-                    viewModel.loginButtonDidTappedAsync()
-                },
-                label: {
-                    Text("Login")
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .background(Color.teal)
-                        .cornerRadius(10)
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
+        ZStack {
+            VStack {
+                Group {
+                    TextField("Type your login", text: $viewModel.username)
+                        .autocorrectionDisabled()
+                    SecureInputView("Type your password",text: $viewModel.password)
                 }
-            )
-            .padding(.bottom, 20)
+                .shadow(radius: 1)
+                .textFieldStyle(.roundedBorder)
+                
+                Text(viewModel.wrongData)
+                
+                Button(
+                    action: {
+                        viewModel.loginButtonDidTappedAsync()
+                    },
+                    label: {
+                        Text("Login")
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .shadow(color: .primary.opacity(0.2), radius: 10, x: 0, y: 10)
+                    }
+                )
+                .padding(.bottom, 20)
+                
+                
+            }
+            .sheet(isPresented: $viewModel.isLogged) {
+                NavigationStack {
+                    ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString, downloadImageUseCase: .live))
+                }
+            }
+            .padding()
             
             ProgressView()
                 .opacity(viewModel.progressViewOpacity)
                 .scaleEffect(2)
         }
-        .sheet(isPresented: $viewModel.isLogged) {
-            NavigationStack {
-                ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString, downloadImageUseCase: .live))
-            }
-        }
-        .padding()
     }
 }
 

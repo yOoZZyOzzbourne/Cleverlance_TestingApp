@@ -50,8 +50,8 @@ struct ImageRepository: ImageRepositoryType {
         return try JSONDecoder().decode(ApiResponse.self, from: data)
     }
     
-    func hashMyUsername(username: String) -> String {
-        let inputData = username.lowercased().data(using: .utf8)
+    func hashMyPassword(password: String) -> String {
+        let inputData = password.lowercased().data(using: .utf8)
         let hashed = Insecure.SHA1.hash(data: inputData!)
         return hashed.compactMap { String(format: "%02x", $0) }.joined()
     }
@@ -60,12 +60,12 @@ struct ImageRepository: ImageRepositoryType {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(hashMyUsername(username: username), forHTTPHeaderField: "authorization")
+        request.addValue(hashMyPassword(password: password), forHTTPHeaderField: "authorization")
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
         
         components.queryItems = [
-            URLQueryItem(name: "username", value: password.lowercased()),
+            URLQueryItem(name: "username", value: username.lowercased()),
         ]
         let query = components.url!.query
         
