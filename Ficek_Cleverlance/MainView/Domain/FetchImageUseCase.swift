@@ -9,16 +9,22 @@ import Foundation
 import Combine
 
 protocol FetchImageUseCaseType {
-    func fetchImage(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError>
+    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError>
+    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse
     var imageRepository: ImageRepositoryType { get }
 }
 
 struct FetchImageUseCase: FetchImageUseCaseType {
+    
     var imageRepository: ImageRepositoryType
  
-    func fetchImage(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError> {
-        return imageRepository.fetchImage(username: username, password: password)
+    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError> {
+        return imageRepository.fetchImageCombine(username: username, password: password)
             .eraseToAnyPublisher()
+    }
+    
+    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse {
+        return try await imageRepository.fetchImageAsync(username: username, password: password)
     }
     
 }

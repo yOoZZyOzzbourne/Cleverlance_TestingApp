@@ -29,12 +29,6 @@ final class ImageShowViewModel: ImageShowViewModelType {
     
     func downloadButtonTapped() {
        imageBase64 = downloadImageUseCase.downloadImage(imageString: imageString)
-//        guard let stringData = Data(base64Encoded: imageString),
-//              let uiImage = UIImage(data: stringData) else {
-//            print("Error: couldn't create UIImage")
-//            return }
-//
-//        imageBase64 = Image(uiImage: uiImage)
     }
 }
 

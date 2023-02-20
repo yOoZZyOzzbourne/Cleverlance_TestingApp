@@ -21,8 +21,6 @@
 		F0AF75C629A1100700FA50BF /* ImageShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75C529A1100700FA50BF /* ImageShowView.swift */; };
 		F0AF75C829A1101A00FA50BF /* ImageShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75C729A1101A00FA50BF /* ImageShowViewModel.swift */; };
 		F0AF75CE29A119BF00FA50BF /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */; };
-		F0AF75D129A24F3200FA50BF /* MockedImageShowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */; };
-		F0AF75D429A24F8100FA50BF /* MockedLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */; };
 		F0AF75D729A27C1500FA50BF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AF75D629A27C1500FA50BF /* Dependencies */; };
 		F0AF75D929A27E6200FA50BF /* MockedImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */; };
 		F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */; };
@@ -65,8 +63,6 @@
 		F0AF75C529A1100700FA50BF /* ImageShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageShowView.swift; sourceTree = "<group>"; };
 		F0AF75C729A1101A00FA50BF /* ImageShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageShowViewModel.swift; sourceTree = "<group>"; };
 		F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
-		F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedImageShowViewModel.swift; sourceTree = "<group>"; };
-		F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedLoginViewModel.swift; sourceTree = "<group>"; };
 		F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedImageRepository.swift; sourceTree = "<group>"; };
 		F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCase.swift; sourceTree = "<group>"; };
 		F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCase.swift; sourceTree = "<group>"; };
@@ -225,7 +221,6 @@
 		F0AF75CF29A24EFA00FA50BF /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				F0AF75D029A24F3200FA50BF /* MockedImageShowViewModel.swift */,
 				F0AF75DE29A28A3800FA50BF /* MockedDownloadImageUseCase.swift */,
 			);
 			path = Mock;
@@ -234,7 +229,6 @@
 		F0AF75D229A24F5D00FA50BF /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				F0AF75D329A24F8100FA50BF /* MockedLoginViewModel.swift */,
 				F0AF75D829A27E6200FA50BF /* MockedImageRepository.swift */,
 			);
 			path = Mock;
@@ -384,11 +378,9 @@
 				F00AAF2329A03AB7006A3D84 /* LoginView.swift in Sources */,
 				F0AF75DF29A28A3800FA50BF /* MockedDownloadImageUseCase.swift in Sources */,
 				F0AF75C829A1101A00FA50BF /* ImageShowViewModel.swift in Sources */,
-				F0AF75D129A24F3200FA50BF /* MockedImageShowViewModel.swift in Sources */,
 				F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */,
 				F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */,
 				F0AF75C629A1100700FA50BF /* ImageShowView.swift in Sources */,
-				F0AF75D429A24F8100FA50BF /* MockedLoginViewModel.swift in Sources */,
 				F00AAF2529A03B26006A3D84 /* LoginViewModel.swift in Sources */,
 				F00AAEF729A02F2F006A3D84 /* Ficek_CleverlanceApp.swift in Sources */,
 			);

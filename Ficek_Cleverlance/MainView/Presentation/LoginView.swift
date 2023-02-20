@@ -13,7 +13,7 @@ struct LoginView<vm: LoginViewModelType>: View {
     var body: some View {
         VStack {
             Group {
-                TextField("Zadejte jméno", text: $viewModel.login)
+                TextField("Zadejte jméno", text: $viewModel.username)
                     .autocorrectionDisabled()
                 SecureInputView("Zadejte heslo",text: $viewModel.password)
             }
@@ -23,7 +23,7 @@ struct LoginView<vm: LoginViewModelType>: View {
             
             Button(
                 action: {
-                    viewModel.loginButtonDidTapped()
+                    viewModel.loginButtonDidTappedAsync()
                 },
                 label: {
                     Text("Login")
