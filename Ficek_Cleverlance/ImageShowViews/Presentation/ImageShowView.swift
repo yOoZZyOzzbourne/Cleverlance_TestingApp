@@ -46,7 +46,7 @@ struct ImageShowView<vm: ImageShowViewModelType>: View {
 
 struct ImageShowView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageShowView(viewModel: ImageShowViewModel(downloadImageUseCase: .mock))
+        ImageShowView(viewModel: ImageShowViewModel())
     }
 }
 

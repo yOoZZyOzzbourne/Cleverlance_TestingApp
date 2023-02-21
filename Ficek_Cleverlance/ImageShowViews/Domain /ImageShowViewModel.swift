@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
+import Dependencies
 
 protocol ImageShowViewModelType: ObservableObject {
     var imageString: String { get set }
@@ -17,21 +17,30 @@ protocol ImageShowViewModelType: ObservableObject {
 }
 
 final class ImageShowViewModel: ImageShowViewModelType {
-    let downloadImageUseCase: DownloadImageUseCaseType
+    @Dependency(\.downloadImageUseCaseClient) var downloadImageUseCaseClient
+
     var imageString: String
     @Published var imageBase64: Image
     
-    init(imageString: String = "", imageBase64: Image = Image(systemName: "sun.fill"), downloadImageUseCase: DownloadImageUseCaseType) {
+    init(imageString: String = "", imageBase64: Image = Image(systemName: "sun.fill")) {
         self.imageString = imageString
         self.imageBase64 = imageBase64
-        self.downloadImageUseCase = downloadImageUseCase
     }
     
     func downloadButtonTapped() {
-       imageBase64 = downloadImageUseCase.downloadImage(imageString: imageString)
+        Task {
+            @MainActor in
+            
+            do {
+                imageBase64 = try downloadImageUseCaseClient.downloadImage(DownloadImageUseCaseClient.Input(imageString: imageString))
+            }
+            catch {
+                print("Request failed")
+            }
+        }
     }
 }
 
 extension ImageShowViewModelType where Self == ImageShowViewModel {
-    static var live: Self { Self(downloadImageUseCase: .live) }
+    static var live: Self { Self() }
 }

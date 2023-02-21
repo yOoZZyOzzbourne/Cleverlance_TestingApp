@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView<vm: LoginViewModelType>: View {
     @ObservedObject var viewModel: vm
-    
+
     var body: some View {
         ZStack {
             VStack {
@@ -42,7 +42,7 @@ struct LoginView<vm: LoginViewModelType>: View {
             }
             .sheet(isPresented: $viewModel.isLogged) {
                 NavigationStack {
-                    ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString, downloadImageUseCase: .live))
+                    ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString))
                 }
             }
             .padding()
@@ -56,6 +56,6 @@ struct LoginView<vm: LoginViewModelType>: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: LoginViewModel(fetchImageUseCase: .mock))
+        LoginView(viewModel: LoginViewModel())
     }
 }

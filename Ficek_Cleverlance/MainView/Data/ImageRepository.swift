@@ -6,74 +6,118 @@
 //
 
 import Foundation
-import Combine
 import CryptoKit
+import Dependencies
 
-protocol ImageRepositoryType {
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError>
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse
-}
-
-struct ImageRepository: ImageRepositoryType {
-   
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError> {
-        guard let url = URL(string: "https://mobility.cleverlance.com/download/bootcamp/image.php")
-        else {
-            return Fail(error: .badUrl)
-                .eraseToAnyPublisher()
-        }
-         
-        return Just(username)
-            .encode(encoder: JSONEncoder())
-            .map { data -> URLRequest in
-                return requestBuilder(url: url, username: username, password: password)
-            }
-            .flatMap {
-                URLSession.shared.dataTaskPublisher(for: $0)
-                    .map(\.data)
-                    .decode(type: ApiResponse.self, decoder: JSONDecoder())
-            }
-            .mapError { error -> ResponseError in
-                error as? ResponseError ?? .internalError
-            }
-            .eraseToAnyPublisher()
-    }
-    
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse {
-        guard let url = URL(string: "https://mobility.cleverlance.com/download/bootcamp/image.php")
-        else {
-            throw ResponseError.badUrl
-        }
-        
-        let (data, _) = try await URLSession.shared.data(for: requestBuilder(url: url, username: username, password: password))
-        
-        return try JSONDecoder().decode(ApiResponse.self, from: data)
-    }
-    
-    func hashMyPassword(password: String) -> String {
-        let inputData = password.lowercased().data(using: .utf8)
-        let hashed = Insecure.SHA1.hash(data: inputData!)
-        return hashed.compactMap { String(format: "%02x", $0) }.joined()
-    }
-    
-    func requestBuilder(url: URL, username: String, password: String) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(hashMyPassword(password: password), forHTTPHeaderField: "authorization")
-        
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        
-        components.queryItems = [
-            URLQueryItem(name: "username", value: username.lowercased()),
-        ]
-        let query = components.url!.query
-        
-        request.httpBody = Data(query!.utf8)
-        return request
+extension DependencyValues {
+    var imageRepositoryClient: ImageRepositoryClient {
+        get { self[ImageRepositoryClient.self] }
+        set { self[ImageRepositoryClient.self] = newValue }
     }
 }
 
-extension ImageRepositoryType where Self == ImageRepository {
-    static var live: Self { Self() }
+struct ImageRepositoryClient {
+    struct Input {
+        let username: String
+        let password: String
+    }
+    let fetchImage: (Input) async throws -> ApiResponse
+}
+
+extension ImageRepositoryClient: DependencyKey {
+    static var liveValue: ImageRepositoryClient {
+        @Dependency(\.requestBuilderClient) var requestBuilderClient
+
+        return Self { input in
+                guard let url = URL(string: "https://mobility.cleverlance.com/download/bootcamp/image.php")
+                else {
+                    throw ResponseError.badUrl
+                }
+               
+            let (data, _) = try await URLSession.shared.data(for: requestBuilderClient.imageRequest(RequestBuilderClient.Input(url: url, username: input.username, password: input.password)))
+                
+                return try JSONDecoder().decode(ApiResponse.self, from: data)
+        }
+    }
+    
+    static var mockValue: ImageRepositoryClient {
+        return Self { input in
+            return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+        }
+    }
+}
+
+
+
+// MARK: - Security client
+
+extension DependencyValues {
+    var securityClient: SecurityClient {
+        get { self[SecurityClient.self] }
+        set { self[SecurityClient.self] = newValue }
+    }
+}
+
+struct SecurityClient {
+    enum SecurityError: Error {
+        case dataAreNil
+    }
+
+    let sha1: (String) throws -> String
+}
+
+extension SecurityClient: DependencyKey {
+    static let liveValue = SecurityClient(
+        sha1: { input in
+            guard let inputData = input.data(using: .utf8) else {
+                throw SecurityError.dataAreNil
+            }
+            let hashed = Insecure.SHA1.hash(data: inputData)
+            return hashed.compactMap { String (format: "%02x", $0) }.joined()
+        }
+    )
+}
+
+// MARK: - Request builder client
+
+extension DependencyValues {
+    var requestBuilderClient: RequestBuilderClient {
+        get { self[RequestBuilderClient.self] }
+        set { self[RequestBuilderClient.self] = newValue }
+    }
+}
+
+struct RequestBuilderClient {
+    struct Input {
+        let url: URL
+        let username: String
+        let password: String
+    }
+
+    let imageRequest: (Input) throws -> URLRequest
+}
+
+extension RequestBuilderClient: DependencyKey {
+    static var liveValue: RequestBuilderClient {
+        @Dependency(\.securityClient) var securityClient
+
+        return Self(
+            imageRequest: { input in
+                let sha1String = try securityClient.sha1(input.password.lowercased())
+
+                var request = URLRequest(url: input.url)
+                request.httpMethod = "POST"
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                request.addValue(sha1String, forHTTPHeaderField: "authorization")
+
+                var components = URLComponents.init(url: input.url, resolvingAgainstBaseURL: false)
+                components?.queryItems = [
+                    URLQueryItem(name: "username", value: input.username.lowercased())
+                ]
+                let query = components?.url?.query
+                request.httpBody = query.flatMap { $0.data(using: .utf8) }
+                return request
+            }
+        )
+    }
 }

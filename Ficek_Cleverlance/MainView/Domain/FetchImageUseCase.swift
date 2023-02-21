@@ -6,30 +6,35 @@
 //
 
 import Foundation
-import Combine
+import Dependencies
 
-protocol FetchImageUseCaseType {
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError>
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse
-    var imageRepository: ImageRepositoryType { get }
+extension DependencyValues {
+    var fetchImageUseCaseClient: FetchImageUseCaseClient {
+        get { self[FetchImageUseCaseClient.self] }
+        set { self[FetchImageUseCaseClient.self] = newValue }
+    }
 }
 
-struct FetchImageUseCase: FetchImageUseCaseType {
-    
-    var imageRepository: ImageRepositoryType
- 
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError> {
-        return imageRepository.fetchImageCombine(username: username, password: password)
-            .eraseToAnyPublisher()
+struct FetchImageUseCaseClient {
+    struct Input {
+        let username: String
+        let password: String
     }
-    
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse {
-        return try await imageRepository.fetchImageAsync(username: username, password: password)
-    }
-    
+    let fetchImage: (Input) async throws -> ApiResponse
 }
 
-extension FetchImageUseCaseType where Self == FetchImageUseCase {
-    static var live: Self { Self(imageRepository: .live) }
-    static var mock: Self { Self(imageRepository: .mock) }
+extension FetchImageUseCaseClient: DependencyKey {
+    static var liveValue: FetchImageUseCaseClient {
+        @Dependency(\.imageRepositoryClient) var imageRepositoryClient
+
+        return Self(fetchImage: { input in
+            return try await imageRepositoryClient.fetchImage(ImageRepositoryClient.Input(username: input.username, password: input.password))
+        })
+    }
+    
+    static var mockValue: FetchImageUseCaseClient {
+        return Self(fetchImage: { input in
+            return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+        })
+    }
 }

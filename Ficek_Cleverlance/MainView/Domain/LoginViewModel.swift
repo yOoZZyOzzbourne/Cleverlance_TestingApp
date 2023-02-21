@@ -18,11 +18,11 @@ protocol LoginViewModelType: ObservableObject {
     var imageString: String { get set }
     var progressViewOpacity: Double { get set }
     
-    func loginButtonDidTappedCombine()
     func loginButtonDidTappedAsync()
 }
 
 final class LoginViewModel: LoginViewModelType {
+    @Dependency(\.fetchImageUseCaseClient) var fetchImageUseCaseClient
     
     @Published var username: String
     @Published var password: String
@@ -30,44 +30,14 @@ final class LoginViewModel: LoginViewModelType {
     @Published var wrongData: String = ""
     @Published var imageString: String
     @Published var progressViewOpacity: Double
-    let fetchImageUseCase: FetchImageUseCaseType
     private var cancellables = Set<AnyCancellable>()
     
-    init(isLogged: Bool = false, username: String = "", password: String = "", imageString: String = "", progressViewOpacity: Double = 0, fetchImageUseCase: FetchImageUseCaseType) {
+    init(isLogged: Bool = false, username: String = "", password: String = "", imageString: String = "", progressViewOpacity: Double = 0) {
         self.isLogged = isLogged
         self.username = username
         self.password = password
         self.imageString = imageString
         self.progressViewOpacity = progressViewOpacity
-        self.fetchImageUseCase = fetchImageUseCase
-        
-    }
-    
-    func loginButtonDidTappedCombine() {
-        progressViewOpacity = 100
-        fetchImageUseCase.fetchImageCombine(username: username, password: password)
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    guard let self = self else { return }
-                    switch completion {
-                    case .finished:
-                        self.isLogged = true
-                        self.wrongData = ""
-                        self.progressViewOpacity = 0
-                        
-                    case .failure:
-                        self.isLogged = false
-                        self.wrongData = "Wrong username or password"
-                        self.progressViewOpacity = 0
-                    }
-                },
-                receiveValue: { [weak self] image in
-                    guard let self = self else { return }
-                    self.imageString = image.image
-                }
-            )
-            .store(in: &cancellables)
     }
     
     func loginButtonDidTappedAsync() {
@@ -76,7 +46,7 @@ final class LoginViewModel: LoginViewModelType {
             @MainActor in
             
             do {
-                let imageResponse = try await fetchImageUseCase.fetchImageAsync(username: username, password: password)
+                let imageResponse = try await fetchImageUseCaseClient.fetchImage(FetchImageUseCaseClient.Input(username: self.username, password: self.password))
                 
                 self.isLogged = true
                 self.wrongData = ""
@@ -94,6 +64,6 @@ final class LoginViewModel: LoginViewModelType {
 }
 
 extension LoginViewModelType where Self == LoginViewModel {
-    static var live: Self { Self(fetchImageUseCase: .live) }
+    static var live: Self { Self() }
 }
 
