@@ -10,6 +10,7 @@ import Combine
 import SwiftUI
 import Dependencies
 
+@MainActor
 final class LoginViewModel: ObservableObject {
     @Dependency(\.fetchImageUseCaseClient) var fetchImageUseCaseClient
     
@@ -21,6 +22,7 @@ final class LoginViewModel: ObservableObject {
     @Published var progressViewOpacity: Double
     private var cancellables = Set<AnyCancellable>()
     var isSendingDisabled: Bool { username.isEmpty || password.isEmpty }
+    var buttonColor: Color { isSendingDisabled ? .gray : .green }
     
     init(
         isLogged: Bool = false,
@@ -36,12 +38,9 @@ final class LoginViewModel: ObservableObject {
         self.progressViewOpacity = progressViewOpacity
     }
     
-    func loginButtonDidTappedAsync() {
-        progressViewOpacity = 100
-        Task {
-            @MainActor in
-            
-            do {
+    func loginButtonDidTappedAsync() async {
+             do {
+                self.progressViewOpacity = 100
                 let imageResponse = try await fetchImageUseCaseClient.fetchImage(
                     FetchImageUseCaseClient.Input(
                         username: self.username,
@@ -57,8 +56,6 @@ final class LoginViewModel: ObservableObject {
                 self.isLogged = false
                 self.wrongData = "Wrong username or password"
                 self.progressViewOpacity = 0
-                print("Request failed")
             }
-        }
     }
 }

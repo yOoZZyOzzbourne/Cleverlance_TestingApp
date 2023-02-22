@@ -40,13 +40,15 @@ struct LoginView: View {
                 
                 Button(
                     action: {
-                        viewModel.loginButtonDidTappedAsync()
+                        Task {
+                           await  viewModel.loginButtonDidTappedAsync()
+                        }
                     },
                     label: {
                         Text("Login")
                             .foregroundColor(.white)
                             .padding(10)
-                            .background(Color.green)
+                            .background(viewModel.buttonColor)
                             .cornerRadius(10)
                             .shadow(color: .primary.opacity(0.2), radius: 10, x: 0, y: 10)
                     }

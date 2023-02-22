@@ -23,19 +23,12 @@
 		F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */; };
 		F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776729A5667400E382AC /* LoginViewModelTests.swift */; };
 		F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
-		F0DA777029A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
 		F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */; };
+		F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		F00AAF0429A02F30006A3D84 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F00AAEEB29A02F2F006A3D84 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F00AAEF229A02F2F006A3D84;
-			remoteInfo = Ficek_Cleverlance;
-		};
-		F00AAF0E29A02F30006A3D84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F00AAEEB29A02F2F006A3D84 /* Project object */;
 			proxyType = 1;
@@ -50,7 +43,6 @@
 		F00AAEFA29A02F30006A3D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00AAEFD29A02F30006A3D84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F00AAF0329A02F30006A3D84 /* Ficek_CleverlanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ficek_CleverlanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F00AAF0D29A02F30006A3D84 /* Ficek_CleverlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ficek_CleverlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00AAF2029A03A92006A3D84 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		F00AAF2229A03AB7006A3D84 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F00AAF2429A03B26006A3D84 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +56,7 @@
 		F0DA776729A5667400E382AC /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCaseTests.swift; sourceTree = "<group>"; };
 		F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
+		F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,13 +69,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F00AAF0029A02F30006A3D84 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F00AAF0A29A02F30006A3D84 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,7 +92,6 @@
 			children = (
 				F00AAEF329A02F2F006A3D84 /* Ficek_Cleverlance.app */,
 				F00AAF0329A02F30006A3D84 /* Ficek_CleverlanceTests.xctest */,
-				F00AAF0D29A02F30006A3D84 /* Ficek_CleverlanceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,8 +122,6 @@
 			children = (
 				F0DA777A29A58B0C00E382AC /* UITests */,
 				F0DA777929A58B0500E382AC /* UnitTests */,
-				F0DA776729A5667400E382AC /* LoginViewModelTests.swift */,
-				F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */,
 			);
 			path = Ficek_CleverlanceTests;
 			sourceTree = "<group>";
@@ -217,6 +200,9 @@
 		F0DA777929A58B0500E382AC /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				F0DA776729A5667400E382AC /* LoginViewModelTests.swift */,
+				F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */,
+				F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -270,24 +256,6 @@
 			productReference = F00AAF0329A02F30006A3D84 /* Ficek_CleverlanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F00AAF0C29A02F30006A3D84 /* Ficek_CleverlanceUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F00AAF1D29A02F30006A3D84 /* Build configuration list for PBXNativeTarget "Ficek_CleverlanceUITests" */;
-			buildPhases = (
-				F00AAF0929A02F30006A3D84 /* Sources */,
-				F00AAF0A29A02F30006A3D84 /* Frameworks */,
-				F00AAF0B29A02F30006A3D84 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				F00AAF0F29A02F30006A3D84 /* PBXTargetDependency */,
-			);
-			name = Ficek_CleverlanceUITests;
-			productName = Ficek_CleverlanceUITests;
-			productReference = F00AAF0D29A02F30006A3D84 /* Ficek_CleverlanceUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -302,11 +270,6 @@
 						CreatedOnToolsVersion = 14.2;
 					};
 					F00AAF0229A02F30006A3D84 = {
-						CreatedOnToolsVersion = 14.2;
-						LastSwiftMigration = 1420;
-						TestTargetID = F00AAEF229A02F2F006A3D84;
-					};
-					F00AAF0C29A02F30006A3D84 = {
 						CreatedOnToolsVersion = 14.2;
 						LastSwiftMigration = 1420;
 						TestTargetID = F00AAEF229A02F2F006A3D84;
@@ -331,7 +294,6 @@
 			targets = (
 				F00AAEF229A02F2F006A3D84 /* Ficek_Cleverlance */,
 				F00AAF0229A02F30006A3D84 /* Ficek_CleverlanceTests */,
-				F00AAF0C29A02F30006A3D84 /* Ficek_CleverlanceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -347,13 +309,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F00AAF0129A02F30006A3D84 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F00AAF0B29A02F30006A3D84 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -386,16 +341,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */,
+				F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */,
 				F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
 				F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F00AAF0929A02F30006A3D84 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F0DA777029A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,11 +354,6 @@
 			isa = PBXTargetDependency;
 			target = F00AAEF229A02F2F006A3D84 /* Ficek_Cleverlance */;
 			targetProxy = F00AAF0429A02F30006A3D84 /* PBXContainerItemProxy */;
-		};
-		F00AAF0F29A02F30006A3D84 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F00AAEF229A02F2F006A3D84 /* Ficek_Cleverlance */;
-			targetProxy = F00AAF0E29A02F30006A3D84 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -640,55 +583,6 @@
 			};
 			name = Release;
 		};
-		F00AAF1E29A02F30006A3D84 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45KK6Y7684;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Ficek_Cleverlance;
-			};
-			name = Debug;
-		};
-		F00AAF1F29A02F30006A3D84 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 45KK6Y7684;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Ficek_Cleverlance;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -715,15 +609,6 @@
 			buildConfigurations = (
 				F00AAF1B29A02F30006A3D84 /* Debug */,
 				F00AAF1C29A02F30006A3D84 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F00AAF1D29A02F30006A3D84 /* Build configuration list for PBXNativeTarget "Ficek_CleverlanceUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F00AAF1E29A02F30006A3D84 /* Debug */,
-				F00AAF1F29A02F30006A3D84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ApiResponse: Decodable {
+struct ApiResponse: Equatable, Decodable {
     let image: String
 }
 
