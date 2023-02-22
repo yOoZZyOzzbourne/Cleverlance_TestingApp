@@ -7,19 +7,34 @@
 
 import SwiftUI
 
-struct LoginView<vm: LoginViewModelType>: View {
-    @ObservedObject var viewModel: vm
+struct LoginView: View {
+    @ObservedObject var viewModel = LoginViewModel()
 
     var body: some View {
         ZStack {
+            LinearGradient(
+                gradient:
+                    Gradient(colors: [
+                        .orange,
+                        .gray ,
+                        .black
+                    ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
             VStack {
                 Group {
                     TextField("Type your login", text: $viewModel.username)
                         .autocorrectionDisabled()
+                        
                     SecureInputView("Type your password",text: $viewModel.password)
                 }
                 .shadow(radius: 1)
                 .textFieldStyle(.roundedBorder)
+                .background(RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(Color("BlackAndWhite")))
                 
                 Text(viewModel.wrongData)
                 
@@ -37,6 +52,9 @@ struct LoginView<vm: LoginViewModelType>: View {
                     }
                 )
                 .padding(.bottom, 20)
+                .disabled(
+                    viewModel.isSendingDisabled
+                )
                 
                 
             }

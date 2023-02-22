@@ -26,20 +26,25 @@ struct DownloadImageUseCaseClient {
 
 extension DownloadImageUseCaseClient: DependencyKey {
     static var liveValue: DownloadImageUseCaseClient {
-
+        
         return Self(downloadImage: { input in
             guard let stringData = Data(base64Encoded: input.imageString),
                   let uiImage = UIImage(data: stringData) else {
                 print("Error: couldn't create UIImage")
-                    return Image(systemName: "")}
+                return Image(systemName: "")}
             
             return Image(uiImage: uiImage)
         })
     }
-    
-    static var mockValue: DownloadImageUseCaseClient {
-        return Self(downloadImage: { input in
+}
+
+extension DownloadImageUseCaseClient {
+    static func mock() -> DownloadImageUseCaseClient {
+        return DownloadImageUseCaseClient( downloadImage: { _ in
             return Image(systemName: "sun.min")
-        })
+            }
+        )
     }
 }
+
+

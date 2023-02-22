@@ -27,14 +27,25 @@ extension FetchImageUseCaseClient: DependencyKey {
     static var liveValue: FetchImageUseCaseClient {
         @Dependency(\.imageRepositoryClient) var imageRepositoryClient
 
-        return Self(fetchImage: { input in
-            return try await imageRepositoryClient.fetchImage(ImageRepositoryClient.Input(username: input.username, password: input.password))
-        })
+        return Self(
+            fetchImage: { input in
+                try await imageRepositoryClient.fetchImage(
+                    ImageRepositoryClient.Input(
+                        username: input.username,
+                        password: input.password
+                    )
+                )
+            }
+        )
     }
-    
-    static var mockValue: FetchImageUseCaseClient {
-        return Self(fetchImage: { input in
-            return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
-        })
+}
+
+extension FetchImageUseCaseClient {
+    static func mock() -> FetchImageUseCaseClient {
+        return FetchImageUseCaseClient(
+            fetchImage: { _ in
+                return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+            }
+        )
     }
 }

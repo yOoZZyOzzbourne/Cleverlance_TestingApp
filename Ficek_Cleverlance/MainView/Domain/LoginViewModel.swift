@@ -10,18 +10,7 @@ import Combine
 import SwiftUI
 import Dependencies
 
-protocol LoginViewModelType: ObservableObject {
-    var username: String { get set }
-    var password: String { get set }
-    var isLogged: Bool { get set }
-    var wrongData: String { get set }
-    var imageString: String { get set }
-    var progressViewOpacity: Double { get set }
-    
-    func loginButtonDidTappedAsync()
-}
-
-final class LoginViewModel: LoginViewModelType {
+final class LoginViewModel: ObservableObject {
     @Dependency(\.fetchImageUseCaseClient) var fetchImageUseCaseClient
     
     @Published var username: String
@@ -31,8 +20,15 @@ final class LoginViewModel: LoginViewModelType {
     @Published var imageString: String
     @Published var progressViewOpacity: Double
     private var cancellables = Set<AnyCancellable>()
+    var isSendingDisabled: Bool { username.isEmpty || password.isEmpty }
     
-    init(isLogged: Bool = false, username: String = "", password: String = "", imageString: String = "", progressViewOpacity: Double = 0) {
+    init(
+        isLogged: Bool = false,
+        username: String = "",
+        password: String = "",
+        imageString: String = "",
+        progressViewOpacity: Double = 0
+    ) {
         self.isLogged = isLogged
         self.username = username
         self.password = password
@@ -46,7 +42,11 @@ final class LoginViewModel: LoginViewModelType {
             @MainActor in
             
             do {
-                let imageResponse = try await fetchImageUseCaseClient.fetchImage(FetchImageUseCaseClient.Input(username: self.username, password: self.password))
+                let imageResponse = try await fetchImageUseCaseClient.fetchImage(
+                    FetchImageUseCaseClient.Input(
+                        username: self.username,
+                        password: self.password)
+                )
                 
                 self.isLogged = true
                 self.wrongData = ""
@@ -62,8 +62,3 @@ final class LoginViewModel: LoginViewModelType {
         }
     }
 }
-
-extension LoginViewModelType where Self == LoginViewModel {
-    static var live: Self { Self() }
-}
-

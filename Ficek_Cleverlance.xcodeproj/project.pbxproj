@@ -10,9 +10,6 @@
 		F00AAEF729A02F2F006A3D84 /* Ficek_CleverlanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAEF629A02F2F006A3D84 /* Ficek_CleverlanceApp.swift */; };
 		F00AAEFB29A02F30006A3D84 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00AAEFA29A02F30006A3D84 /* Assets.xcassets */; };
 		F00AAEFE29A02F30006A3D84 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00AAEFD29A02F30006A3D84 /* Preview Assets.xcassets */; };
-		F00AAF0829A02F30006A3D84 /* Ficek_CleverlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF0729A02F30006A3D84 /* Ficek_CleverlanceTests.swift */; };
-		F00AAF1229A02F30006A3D84 /* Ficek_CleverlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF1129A02F30006A3D84 /* Ficek_CleverlanceUITests.swift */; };
-		F00AAF1429A02F30006A3D84 /* Ficek_CleverlanceUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF1329A02F30006A3D84 /* Ficek_CleverlanceUITestsLaunchTests.swift */; };
 		F00AAF2129A03A92006A3D84 /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF2029A03A92006A3D84 /* ImageRepository.swift */; };
 		F00AAF2329A03AB7006A3D84 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF2229A03AB7006A3D84 /* LoginView.swift */; };
 		F00AAF2529A03B26006A3D84 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00AAF2429A03B26006A3D84 /* LoginViewModel.swift */; };
@@ -24,6 +21,10 @@
 		F0AF75D729A27C1500FA50BF /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = F0AF75D629A27C1500FA50BF /* Dependencies */; };
 		F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */; };
 		F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */; };
+		F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776729A5667400E382AC /* LoginViewModelTests.swift */; };
+		F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
+		F0DA777029A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
+		F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,10 +50,7 @@
 		F00AAEFA29A02F30006A3D84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00AAEFD29A02F30006A3D84 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F00AAF0329A02F30006A3D84 /* Ficek_CleverlanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ficek_CleverlanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F00AAF0729A02F30006A3D84 /* Ficek_CleverlanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ficek_CleverlanceTests.swift; sourceTree = "<group>"; };
 		F00AAF0D29A02F30006A3D84 /* Ficek_CleverlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Ficek_CleverlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F00AAF1129A02F30006A3D84 /* Ficek_CleverlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ficek_CleverlanceUITests.swift; sourceTree = "<group>"; };
-		F00AAF1329A02F30006A3D84 /* Ficek_CleverlanceUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ficek_CleverlanceUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F00AAF2029A03A92006A3D84 /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		F00AAF2229A03AB7006A3D84 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F00AAF2429A03B26006A3D84 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -63,6 +61,9 @@
 		F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		F0AF75DA29A2851800FA50BF /* FetchImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCase.swift; sourceTree = "<group>"; };
 		F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCase.swift; sourceTree = "<group>"; };
+		F0DA776729A5667400E382AC /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
+		F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCaseTests.swift; sourceTree = "<group>"; };
+		F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +97,6 @@
 			children = (
 				F00AAEF529A02F2F006A3D84 /* Ficek_Cleverlance */,
 				F00AAF0629A02F30006A3D84 /* Ficek_CleverlanceTests */,
-				F00AAF1029A02F30006A3D84 /* Ficek_CleverlanceUITests */,
 				F00AAEF429A02F2F006A3D84 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,6 +114,7 @@
 		F00AAEF529A02F2F006A3D84 /* Ficek_Cleverlance */ = {
 			isa = PBXGroup;
 			children = (
+				F0DA777129A589F500E382AC /* FicekCleverlanceUITest */,
 				F00AAEF629A02F2F006A3D84 /* Ficek_CleverlanceApp.swift */,
 				F00AAF2829A0591D006A3D84 /* MainView */,
 				F0AF75C929A1192900FA50BF /* ImageShowViews */,
@@ -134,18 +135,12 @@
 		F00AAF0629A02F30006A3D84 /* Ficek_CleverlanceTests */ = {
 			isa = PBXGroup;
 			children = (
-				F00AAF0729A02F30006A3D84 /* Ficek_CleverlanceTests.swift */,
+				F0DA777A29A58B0C00E382AC /* UITests */,
+				F0DA777929A58B0500E382AC /* UnitTests */,
+				F0DA776729A5667400E382AC /* LoginViewModelTests.swift */,
+				F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */,
 			);
 			path = Ficek_CleverlanceTests;
-			sourceTree = "<group>";
-		};
-		F00AAF1029A02F30006A3D84 /* Ficek_CleverlanceUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F00AAF1129A02F30006A3D84 /* Ficek_CleverlanceUITests.swift */,
-				F00AAF1329A02F30006A3D84 /* Ficek_CleverlanceUITestsLaunchTests.swift */,
-			);
-			path = Ficek_CleverlanceUITests;
 			sourceTree = "<group>";
 		};
 		F00AAF2829A0591D006A3D84 /* MainView */ = {
@@ -210,6 +205,28 @@
 				F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */,
 			);
 			path = "Domain ";
+			sourceTree = "<group>";
+		};
+		F0DA777129A589F500E382AC /* FicekCleverlanceUITest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FicekCleverlanceUITest;
+			sourceTree = "<group>";
+		};
+		F0DA777929A58B0500E382AC /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		F0DA777A29A58B0C00E382AC /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */,
+			);
+			path = UITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +303,12 @@
 					};
 					F00AAF0229A02F30006A3D84 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = F00AAEF229A02F2F006A3D84;
 					};
 					F00AAF0C29A02F30006A3D84 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = F00AAEF229A02F2F006A3D84;
 					};
 				};
@@ -366,7 +385,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00AAF0829A02F30006A3D84 /* Ficek_CleverlanceTests.swift in Sources */,
+				F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */,
+				F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
+				F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,8 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F00AAF1429A02F30006A3D84 /* Ficek_CleverlanceUITestsLaunchTests.swift in Sources */,
-				F00AAF1229A02F30006A3D84 /* Ficek_CleverlanceUITests.swift in Sources */,
+				F0DA777029A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,15 +592,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KK6Y7684;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ficek_Cleverlance.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ficek_Cleverlance";
@@ -592,11 +619,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KK6Y7684;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,14 +644,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KK6Y7684;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Ficek_Cleverlance;
@@ -629,10 +669,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KK6Y7684;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.Ficek.Ficek-CleverlanceUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
