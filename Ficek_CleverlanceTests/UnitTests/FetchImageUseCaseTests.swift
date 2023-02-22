@@ -14,14 +14,18 @@ import Dependencies
 final class FetchingImageUseCaseTests: XCTestCase {
     
     func testFetchingImage() async throws {
-     
+        
         let sut = withDependencies {
             $0.imageRepositoryClient = .mock()
         } operation: {
             FetchImageUseCaseClient.liveValue
         }
         
-        let image = try await sut.fetchImage(FetchImageUseCaseClient.Input(username: "", password: ""))
+        let image = try await sut.fetchImage(
+            FetchImageUseCaseClient.Input(
+                username: "",
+                password: "")
+        )
         
         XCTAssertEqual(image.image, "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
     }

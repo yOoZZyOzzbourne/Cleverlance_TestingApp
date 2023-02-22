@@ -24,9 +24,9 @@ final class LoginViewModelTests: XCTestCase {
         
         XCTAssertEqual(sut.progressViewOpacity, 0)
         XCTAssertEqual(sut.isLogged, false)
+        
         await sut.loginButtonDidTappedAsync()
        
-        
         XCTAssertEqual(sut.progressViewOpacity, 0)
         XCTAssertEqual(sut.isLogged, true)
         
@@ -34,9 +34,11 @@ final class LoginViewModelTests: XCTestCase {
     
     func testFailedLohin() async throws {
         let sut = withDependencies {
-            $0.fetchImageUseCaseClient = FetchImageUseCaseClient(fetchImage: { _ in
-                throw ResponseError.internalError
-            })
+            $0.fetchImageUseCaseClient = FetchImageUseCaseClient(
+                fetchImage: { _ in
+                    throw ResponseError.internalError
+                }
+            )
         } operation: {
             LoginViewModel()
         }
