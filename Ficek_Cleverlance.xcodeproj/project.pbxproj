@@ -99,7 +99,6 @@
 		F00AAEF529A02F2F006A3D84 /* Ficek_Cleverlance */ = {
 			isa = PBXGroup;
 			children = (
-				F0DA777129A589F500E382AC /* FicekCleverlanceUITest */,
 				F00AAEF629A02F2F006A3D84 /* Ficek_CleverlanceApp.swift */,
 				F00AAF2829A0591D006A3D84 /* MainView */,
 				F0AF75C929A1192900FA50BF /* ImageShowViews */,
@@ -188,13 +187,6 @@
 				F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */,
 			);
 			path = "Domain ";
-			sourceTree = "<group>";
-		};
-		F0DA777129A589F500E382AC /* FicekCleverlanceUITest */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FicekCleverlanceUITest;
 			sourceTree = "<group>";
 		};
 		F0DA777929A58B0500E382AC /* UnitTests */ = {
