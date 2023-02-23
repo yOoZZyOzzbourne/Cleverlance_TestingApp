@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct ImageShowView: View {
-    @ObservedObject var viewModel = ImageShowViewModel()
+    @ObservedObject var viewModel: ImageShowViewModel
     
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient:
-                    Gradient(colors: [
-                        .orange,
-                        .gray ,
-                        .black
-                    ]),
+                gradient: Gradient(colors: [.orange, .gray , .black]),
                 startPoint: .top,
                 endPoint: .bottom
             )

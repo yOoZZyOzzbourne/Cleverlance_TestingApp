@@ -25,6 +25,7 @@
 		F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
 		F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */; };
 		F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */; };
+		F0DA779829A6E58C00E382AC /* ImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA779729A6E58C00E382AC /* ImageRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCaseTests.swift; sourceTree = "<group>"; };
 		F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCaseTests.swift; sourceTree = "<group>"; };
+		F0DA779729A6E58C00E382AC /* ImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				F0DA776729A5667400E382AC /* LoginViewModelTests.swift */,
 				F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */,
 				F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */,
+				F0DA779729A6E58C00E382AC /* ImageRepositoryTests.swift */,
 			);
 			path = UnitTests;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */,
 				F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
 				F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */,
+				F0DA779829A6E58C00E382AC /* ImageRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

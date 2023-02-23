@@ -25,7 +25,7 @@ final class LoginViewModelTests: XCTestCase {
         XCTAssertEqual(sut.progressViewOpacity, 0)
         XCTAssertEqual(sut.isLogged, false)
         
-        await sut.loginButtonDidTappedAsync()
+        await sut.loginButtonDidTapped()
        
         XCTAssertEqual(sut.progressViewOpacity, 0)
         XCTAssertEqual(sut.isLogged, true)
@@ -43,7 +43,7 @@ final class LoginViewModelTests: XCTestCase {
             LoginViewModel()
         }
         
-        await sut.loginButtonDidTappedAsync()
+        await sut.loginButtonDidTapped()
         
         XCTAssertEqual(sut.wrongData, "Wrong username or password")
         XCTAssertEqual(sut.isLogged, false)

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Dependencies
+import XCTestDynamicOverlay
 
 extension DependencyValues {
     var downloadImageUseCaseClient: DownloadImageUseCaseClient {
@@ -36,13 +37,23 @@ extension DownloadImageUseCaseClient: DependencyKey {
             return Image(uiImage: uiImage)
         })
     }
+    
+    static let testValue = DownloadImageUseCaseClient(
+        downloadImage: unimplemented("DownloadImageUseCaseClient(downloadImage: )")
+    )
+    
+    static let previewValue = DownloadImageUseCaseClient(
+        downloadImage: { _ in
+            return Image(systemName: "sun.min")
+        }
+    )
 }
 
 extension DownloadImageUseCaseClient {
     static func mock() -> DownloadImageUseCaseClient {
         return DownloadImageUseCaseClient( downloadImage: { _ in
             return Image(systemName: "sun.min")
-            }
+        }
         )
     }
 }

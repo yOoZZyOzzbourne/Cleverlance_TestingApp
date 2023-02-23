@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 import SwiftUI
 import Dependencies
 
@@ -20,9 +19,6 @@ final class LoginViewModel: ObservableObject {
     @Published var wrongData: String = ""
     @Published var imageString: String
     @Published var progressViewOpacity: Double
-    private var cancellables = Set<AnyCancellable>()
-    var isSendingDisabled: Bool { username.isEmpty || password.isEmpty }
-    var buttonColor: Color { isSendingDisabled ? .gray : .green }
     
     init(
         isLogged: Bool = false,
@@ -38,24 +34,28 @@ final class LoginViewModel: ObservableObject {
         self.progressViewOpacity = progressViewOpacity
     }
     
-    func loginButtonDidTappedAsync() async {
-             do {
-                self.progressViewOpacity = 100
-                let imageResponse = try await fetchImageUseCaseClient.fetchImage(
-                    FetchImageUseCaseClient.Input(
-                        username: self.username,
-                        password: self.password)
-                )
-                
-                self.isLogged = true
-                self.wrongData = ""
-                self.progressViewOpacity = 0
-                self.imageString = imageResponse.image
-            }
-            catch {
-                self.isLogged = false
-                self.wrongData = "Wrong username or password"
-                self.progressViewOpacity = 0
-            }
+    var isSendingDisabled: Bool { username.isEmpty || password.isEmpty }
+    
+    var buttonColor: Color { isSendingDisabled ? .gray : .green }
+    
+    func loginButtonDidTapped() async {
+        do {
+            self.progressViewOpacity = 1
+            let imageResponse = try await fetchImageUseCaseClient.fetchImage(
+                FetchImageUseCaseClient.Input(
+                    username: self.username,
+                    password: self.password)
+            )
+            
+            self.isLogged = true
+            self.wrongData = ""
+            self.progressViewOpacity = 0
+            self.imageString = imageResponse.image
+        }
+        catch {
+            self.isLogged = false
+            self.wrongData = "Wrong username or password"
+            self.progressViewOpacity = 0
+        }
     }
 }

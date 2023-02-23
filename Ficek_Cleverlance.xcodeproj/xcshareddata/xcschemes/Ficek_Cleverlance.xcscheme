@@ -30,24 +30,12 @@
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F00AAF0229A02F30006A3D84"
                BuildableName = "Ficek_CleverlanceTests.xctest"
                BlueprintName = "Ficek_CleverlanceTests"
-               ReferencedContainer = "container:Ficek_Cleverlance.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F00AAF0C29A02F30006A3D84"
-               BuildableName = "Ficek_CleverlanceUITests.xctest"
-               BlueprintName = "Ficek_CleverlanceUITests"
                ReferencedContainer = "container:Ficek_Cleverlance.xcodeproj">
             </BuildableReference>
          </TestableReference>

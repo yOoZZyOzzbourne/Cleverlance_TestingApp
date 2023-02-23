@@ -10,7 +10,6 @@ import XCTest
 @testable import Ficek_Cleverlance
 import Dependencies
 
-@MainActor
 final class FetchingImageUseCaseTests: XCTestCase {
     
     func testFetchingImage() async throws {

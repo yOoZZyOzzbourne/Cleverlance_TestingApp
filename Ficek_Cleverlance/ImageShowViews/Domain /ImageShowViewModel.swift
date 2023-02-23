@@ -11,7 +11,7 @@ import Dependencies
 
 final class ImageShowViewModel: ObservableObject {
     @Dependency(\.downloadImageUseCaseClient) var downloadImageUseCaseClient
-
+    
     @Published var imageBase64: Image
     var imageString: String
     

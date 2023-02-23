@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel = LoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel
 
     var body: some View {
         ZStack {
             LinearGradient(
-                gradient:
-                    Gradient(colors: [
-                        .orange,
-                        .gray ,
-                        .black
-                    ]),
+                gradient: Gradient(colors: [.orange, .gray , .black ]),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -41,7 +36,7 @@ struct LoginView: View {
                 Button(
                     action: {
                         Task {
-                           await  viewModel.loginButtonDidTappedAsync()
+                           await  viewModel.loginButtonDidTapped()
                         }
                     },
                     label: {

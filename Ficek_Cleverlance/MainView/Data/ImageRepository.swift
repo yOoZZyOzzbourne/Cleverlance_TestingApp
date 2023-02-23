@@ -8,6 +8,7 @@
 import Foundation
 import CryptoKit
 import Dependencies
+import XCTestDynamicOverlay
 
 extension DependencyValues {
     var imageRepositoryClient: ImageRepositoryClient {
@@ -26,6 +27,7 @@ struct ImageRepositoryClient {
 
 extension ImageRepositoryClient: DependencyKey {
     static var liveValue: ImageRepositoryClient {
+        @Dependency(\.apiClient) var apiClient
         @Dependency(\.requestBuilderClient) var requestBuilderClient
         
         return Self(
@@ -42,7 +44,7 @@ extension ImageRepositoryClient: DependencyKey {
                     )
                 )
                 
-                let (data, _) = try await URLSession.shared.data(for: request)
+                let (data, _) = try await apiClient.request(request)
                 
                 return try JSONDecoder().decode(ApiResponse.self, from: data)
             }
@@ -59,8 +61,6 @@ extension ImageRepositoryClient {
         )
     }
 }
-
-
 
 // MARK: - Security client
 
@@ -132,6 +132,31 @@ extension RequestBuilderClient: DependencyKey {
                 return request
             }
         )
+    }
+    
+    static var testValue = RequestBuilderClient { input in
+        return URLRequest(url: input.url)
+    }
+}
+
+// MARK: - API client
+
+extension DependencyValues {
+    var apiClient: APIClient {
+        get { self[APIClient.self] }
+        set { self[APIClient.self] = newValue }
+    }
+}
+
+struct APIClient {
+    let request: (URLRequest) async throws -> (Data, URLResponse)
+}
+
+extension APIClient: DependencyKey {
+    static var liveValue: APIClient {
+        return Self( request: { request in
+            try await URLSession.shared.data(for: request)
+        })
     }
 }
 

@@ -10,7 +10,8 @@ import Foundation
 import SwiftUI
 import XCTest
 
-@MainActor class SendMessageViewModelTests: XCTestCase {
+@MainActor
+class SendMessageViewModelTests: XCTestCase {
     private var viewModel: LoginViewModel!
 
     @MainActor override func setUp() {
