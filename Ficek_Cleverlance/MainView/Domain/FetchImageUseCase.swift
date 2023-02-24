@@ -6,30 +6,46 @@
 //
 
 import Foundation
-import Combine
+import Dependencies
 
-protocol FetchImageUseCaseType {
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError>
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse
-    var imageRepository: ImageRepositoryType { get }
+extension DependencyValues {
+    var fetchImageUseCaseClient: FetchImageUseCase {
+        get { self[FetchImageUseCase.self] }
+        set { self[FetchImageUseCase.self] = newValue }
+    }
 }
 
-struct FetchImageUseCase: FetchImageUseCaseType {
-    
-    var imageRepository: ImageRepositoryType
- 
-    func fetchImageCombine(username: String, password: String) -> AnyPublisher<ApiResponse, ResponseError> {
-        return imageRepository.fetchImageCombine(username: username, password: password)
-            .eraseToAnyPublisher()
+struct FetchImageUseCase {
+    struct Input {
+        let username: String
+        let password: String
     }
-    
-    func fetchImageAsync(username: String, password: String) async throws -> ApiResponse {
-        return try await imageRepository.fetchImageAsync(username: username, password: password)
-    }
-    
+    let fetchImage: (Input) async throws -> ApiResponse
 }
 
-extension FetchImageUseCaseType where Self == FetchImageUseCase {
-    static var live: Self { Self(imageRepository: .live) }
-    static var mock: Self { Self(imageRepository: .mock) }
+extension FetchImageUseCase: DependencyKey {
+    static var liveValue: FetchImageUseCase {
+        @Dependency(\.imageRepositoryClient) var imageRepositoryClient
+
+        return Self(
+            fetchImage: { input in
+                try await imageRepositoryClient.fetchImage(
+                    ImageRepositoryClient.Input(
+                        username: input.username,
+                        password: input.password
+                    )
+                )
+            }
+        )
+    }
+}
+
+extension FetchImageUseCase {
+    static func mock() -> FetchImageUseCase {
+        return FetchImageUseCase(
+            fetchImage: { _ in
+                return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
+            }
+        )
+    }
 }

@@ -7,46 +7,57 @@
 
 import SwiftUI
 
-struct ImageShowView<vm: ImageShowViewModelType>: View {
-    @ObservedObject var viewModel: vm
+struct ImageShowView: View {
+    @ObservedObject var viewModel: ImageShowViewModel
     
     var body: some View {
-        VStack {
-            Text("Image preview")
-                .font(.largeTitle)
-                .padding(.top,60)
-              
-            Spacer()
-            
-            viewModel.imageBase64
-                .resizable()
-                .scaledToFit()
-                .shadow(color: .secondary.opacity(0.2), radius: 5)
-                .padding()
-            
-            Spacer()
-            
-            Button(
-                action: {
-                    viewModel.downloadButtonTapped()
-                },
-                label: {
-                    Text("Download Image")
-                        .foregroundColor(.white)
-                        .padding(10)
-                        .background(Color.green)
-                        .cornerRadius(10)
-                        .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
-                }
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [.orange, .gray , .black]),
+                startPoint: .top,
+                endPoint: .bottom
             )
-            .padding(.bottom, 20)
+            .ignoresSafeArea()
+            
+            VStack {
+                Text("Image preview")
+                    .font(.largeTitle)
+                    .padding(.top,60)
+                
+                Spacer()
+                
+                viewModel.imageBase64
+                    .resizable()
+                    .scaledToFit()
+                    .shadow(color: .secondary.opacity(0.2), radius: 5)
+                    .padding()
+                
+                Spacer()
+                
+                Button(
+                    action: {
+                        Task {
+                            await viewModel.downloadButtonTapped()
+                        }
+                    },
+                    label: {
+                        Text("Download Image")
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(Color.green)
+                            .cornerRadius(10)
+                            .shadow(color: .black.opacity(0.2), radius: 10, x: 0, y: 10)
+                    }
+                )
+                .padding(.bottom, 20)
+            }
         }
     }
 }
 
 struct ImageShowView_Previews: PreviewProvider {
     static var previews: some View {
-        ImageShowView(viewModel: ImageShowViewModel(downloadImageUseCase: .mock))
+        ImageShowView(viewModel: ImageShowViewModel())
     }
 }
 

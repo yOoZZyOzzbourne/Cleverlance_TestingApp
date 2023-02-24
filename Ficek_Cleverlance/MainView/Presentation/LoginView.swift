@@ -7,42 +7,57 @@
 
 import SwiftUI
 
-struct LoginView<vm: LoginViewModelType>: View {
-    @ObservedObject var viewModel: vm
-    
+struct LoginView: View {
+    @ObservedObject var viewModel: LoginViewModel
+
     var body: some View {
         ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [.orange, .gray , .black ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
+            
             VStack {
                 Group {
                     TextField("Type your login", text: $viewModel.username)
                         .autocorrectionDisabled()
+                        
                     SecureInputView("Type your password",text: $viewModel.password)
                 }
                 .shadow(radius: 1)
                 .textFieldStyle(.roundedBorder)
+                .background(RoundedRectangle(cornerRadius: 5)
+                    .foregroundColor(Color("BlackAndWhite")))
                 
                 Text(viewModel.wrongData)
                 
                 Button(
                     action: {
-                        viewModel.loginButtonDidTappedAsync()
+                        Task {
+                           await  viewModel.loginButtonDidTapped()
+                        }
                     },
                     label: {
                         Text("Login")
                             .foregroundColor(.white)
                             .padding(10)
-                            .background(Color.green)
+                            .background(viewModel.buttonColor)
                             .cornerRadius(10)
                             .shadow(color: .primary.opacity(0.2), radius: 10, x: 0, y: 10)
                     }
                 )
                 .padding(.bottom, 20)
+                .disabled(
+                    viewModel.isSendingDisabled
+                )
                 
                 
             }
             .sheet(isPresented: $viewModel.isLogged) {
                 NavigationStack {
-                    ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString, downloadImageUseCase: .live))
+                    ImageShowView(viewModel: ImageShowViewModel(imageString: viewModel.imageString))
                 }
             }
             .padding()
@@ -56,6 +71,6 @@ struct LoginView<vm: LoginViewModelType>: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: LoginViewModel(fetchImageUseCase: .mock))
+        LoginView(viewModel: LoginViewModel())
     }
 }
