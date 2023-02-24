@@ -23,9 +23,11 @@
 		F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */; };
 		F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776729A5667400E382AC /* LoginViewModelTests.swift */; };
 		F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */; };
-		F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */; };
 		F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */; };
 		F0DA779829A6E58C00E382AC /* ImageRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DA779729A6E58C00E382AC /* ImageRepositoryTests.swift */; };
+		F0E0A98F29A9526A004760E7 /* RequestBuilderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0A98E29A9526A004760E7 /* RequestBuilderClient.swift */; };
+		F0E0A99129A95288004760E7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0A99029A95288004760E7 /* APIClient.swift */; };
+		F0E0A99329A9529D004760E7 /* SecurityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E0A99229A9529D004760E7 /* SecurityClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,9 +58,11 @@
 		F0AF75DC29A2879E00FA50BF /* DownloadImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCase.swift; sourceTree = "<group>"; };
 		F0DA776729A5667400E382AC /* LoginViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelTests.swift; sourceTree = "<group>"; };
 		F0DA776E29A575FB00E382AC /* FetchImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageUseCaseTests.swift; sourceTree = "<group>"; };
-		F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		F0DA777B29A660E200E382AC /* DownloadImageUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageUseCaseTests.swift; sourceTree = "<group>"; };
 		F0DA779729A6E58C00E382AC /* ImageRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryTests.swift; sourceTree = "<group>"; };
+		F0E0A98E29A9526A004760E7 /* RequestBuilderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBuilderClient.swift; sourceTree = "<group>"; };
+		F0E0A99029A95288004760E7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F0E0A99229A9529D004760E7 /* SecurityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			children = (
 				F00AAF2029A03A92006A3D84 /* ImageRepository.swift */,
 				F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */,
+				F0E0A98D29A95254004760E7 /* Dependencies */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -205,9 +210,18 @@
 		F0DA777A29A58B0C00E382AC /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				F0DA777729A58ACE00E382AC /* LoginViewUITests.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		F0E0A98D29A95254004760E7 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				F0E0A98E29A9526A004760E7 /* RequestBuilderClient.swift */,
+				F0E0A99029A95288004760E7 /* APIClient.swift */,
+				F0E0A99229A9529D004760E7 /* SecurityClient.swift */,
+			);
+			path = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,10 +335,13 @@
 				F00AAF2D29A0598C006A3D84 /* MainView.swift in Sources */,
 				F0AF75CE29A119BF00FA50BF /* ApiResponse.swift in Sources */,
 				F00AAF2129A03A92006A3D84 /* ImageRepository.swift in Sources */,
+				F0E0A98F29A9526A004760E7 /* RequestBuilderClient.swift in Sources */,
 				F00AAF2329A03AB7006A3D84 /* LoginView.swift in Sources */,
 				F0AF75C829A1101A00FA50BF /* ImageShowViewModel.swift in Sources */,
 				F0AF75DB29A2851800FA50BF /* FetchImageUseCase.swift in Sources */,
+				F0E0A99329A9529D004760E7 /* SecurityClient.swift in Sources */,
 				F0AF75DD29A2879E00FA50BF /* DownloadImageUseCase.swift in Sources */,
+				F0E0A99129A95288004760E7 /* APIClient.swift in Sources */,
 				F0AF75C629A1100700FA50BF /* ImageShowView.swift in Sources */,
 				F00AAF2529A03B26006A3D84 /* LoginViewModel.swift in Sources */,
 				F00AAEF729A02F2F006A3D84 /* Ficek_CleverlanceApp.swift in Sources */,
@@ -338,7 +355,6 @@
 				F0DA776829A5667400E382AC /* LoginViewModelTests.swift in Sources */,
 				F0DA777C29A660E200E382AC /* DownloadImageUseCaseTests.swift in Sources */,
 				F0DA776F29A575FB00E382AC /* FetchImageUseCaseTests.swift in Sources */,
-				F0DA777829A58ACE00E382AC /* LoginViewUITests.swift in Sources */,
 				F0DA779829A6E58C00E382AC /* ImageRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

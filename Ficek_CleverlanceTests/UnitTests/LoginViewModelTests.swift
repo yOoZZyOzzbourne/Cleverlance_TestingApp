@@ -14,7 +14,7 @@ import Combine
 @MainActor
 final class LoginViewModelTests: XCTestCase {
     
-    func testLogin() async throws {
+    func testLogin() async {
         
         let sut = withDependencies {
             $0.fetchImageUseCaseClient = .mock()
@@ -32,9 +32,9 @@ final class LoginViewModelTests: XCTestCase {
         
     }
     
-    func testFailedLohin() async throws {
+    func testFailedLohin() async {
         let sut = withDependencies {
-            $0.fetchImageUseCaseClient = FetchImageUseCaseClient(
+            $0.fetchImageUseCaseClient = FetchImageUseCase(
                 fetchImage: { _ in
                     throw ResponseError.internalError
                 }
@@ -48,5 +48,22 @@ final class LoginViewModelTests: XCTestCase {
         XCTAssertEqual(sut.wrongData, "Wrong username or password")
         XCTAssertEqual(sut.isLogged, false)
         
+    }
+    
+    private var viewModel: LoginViewModel!
+
+    override func setUp() {
+        super.setUp()
+        viewModel = LoginViewModel()
+    }
+
+    func testSendingDisabledWhileMessageIsEmpty() {
+        XCTAssertTrue(viewModel.isSendingDisabled)
+        XCTAssertEqual(viewModel.buttonColor, .gray)
+        viewModel.username = "Message"
+        XCTAssertTrue(viewModel.isSendingDisabled)
+        viewModel.password = "Message"
+        XCTAssertFalse(viewModel.isSendingDisabled)
+        XCTAssertEqual(viewModel.buttonColor, .green)
     }
 }

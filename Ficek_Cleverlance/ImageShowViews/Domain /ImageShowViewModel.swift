@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Dependencies
 
+@MainActor
 final class ImageShowViewModel: ObservableObject {
     @Dependency(\.downloadImageUseCaseClient) var downloadImageUseCaseClient
     
@@ -23,20 +24,16 @@ final class ImageShowViewModel: ObservableObject {
         self.imageBase64 = imageBase64
     }
     
-    func downloadButtonTapped() {
-        Task {
-            @MainActor in
-            
-            do {
-                imageBase64 = try downloadImageUseCaseClient.downloadImage(
-                    DownloadImageUseCaseClient.Input(
-                        imageString: imageString
-                    )
+    func downloadButtonTapped() async{
+        do {
+            imageBase64 = try downloadImageUseCaseClient.downloadImage(
+                DownloadImageUseCaseClient.Input(
+                    imageString: imageString
                 )
-            }
-            catch {
-                print("Request failed")
-            }
+            )
+        }
+        catch {
+            print("Request failed")
         }
     }
 }

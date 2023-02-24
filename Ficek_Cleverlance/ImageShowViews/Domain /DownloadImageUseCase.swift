@@ -53,7 +53,7 @@ extension DownloadImageUseCaseClient {
     static func mock() -> DownloadImageUseCaseClient {
         return DownloadImageUseCaseClient( downloadImage: { _ in
             return Image(systemName: "sun.min")
-        }
+            }
         )
     }
 }

@@ -42,7 +42,7 @@ final class LoginViewModel: ObservableObject {
         do {
             self.progressViewOpacity = 1
             let imageResponse = try await fetchImageUseCaseClient.fetchImage(
-                FetchImageUseCaseClient.Input(
+                FetchImageUseCase.Input(
                     username: self.username,
                     password: self.password)
             )
@@ -51,8 +51,7 @@ final class LoginViewModel: ObservableObject {
             self.wrongData = ""
             self.progressViewOpacity = 0
             self.imageString = imageResponse.image
-        }
-        catch {
+        } catch {
             self.isLogged = false
             self.wrongData = "Wrong username or password"
             self.progressViewOpacity = 0

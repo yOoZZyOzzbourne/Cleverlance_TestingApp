@@ -17,11 +17,11 @@ final class FetchingImageUseCaseTests: XCTestCase {
         let sut = withDependencies {
             $0.imageRepositoryClient = .mock()
         } operation: {
-            FetchImageUseCaseClient.liveValue
+            FetchImageUseCase.liveValue
         }
         
         let image = try await sut.fetchImage(
-            FetchImageUseCaseClient.Input(
+            FetchImageUseCase.Input(
                 username: "",
                 password: "")
         )

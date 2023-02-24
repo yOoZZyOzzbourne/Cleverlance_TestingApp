@@ -36,7 +36,9 @@ struct ImageShowView: View {
                 
                 Button(
                     action: {
-                        viewModel.downloadButtonTapped()
+                        Task {
+                            await viewModel.downloadButtonTapped()
+                        }
                     },
                     label: {
                         Text("Download Image")

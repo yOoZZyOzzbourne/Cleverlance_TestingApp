@@ -24,13 +24,13 @@ final class ImageRepositoryTests: XCTestCase {
 
 
     func testImageRepository() async throws {
-        let data = jsonMock.data(using: .utf8)
-        let mockResponse = HTTPURLResponse.init(url: url!, statusCode: 200, httpVersion: nil , headerFields: nil)
+        let data = try XCTUnwrap(jsonMock.data(using: .utf8))
+        let mockResponse = try XCTUnwrap(HTTPURLResponse.init(url: url!, statusCode: 200, httpVersion: nil , headerFields: nil))
 
         
         let sut = withDependencies {
             $0.apiClient = APIClient(request: { _ in
-                return (data!, mockResponse!)
+                return (data, mockResponse)
             })
             
         } operation: {

@@ -9,13 +9,13 @@ import Foundation
 import Dependencies
 
 extension DependencyValues {
-    var fetchImageUseCaseClient: FetchImageUseCaseClient {
-        get { self[FetchImageUseCaseClient.self] }
-        set { self[FetchImageUseCaseClient.self] = newValue }
+    var fetchImageUseCaseClient: FetchImageUseCase {
+        get { self[FetchImageUseCase.self] }
+        set { self[FetchImageUseCase.self] = newValue }
     }
 }
 
-struct FetchImageUseCaseClient {
+struct FetchImageUseCase {
     struct Input {
         let username: String
         let password: String
@@ -23,8 +23,8 @@ struct FetchImageUseCaseClient {
     let fetchImage: (Input) async throws -> ApiResponse
 }
 
-extension FetchImageUseCaseClient: DependencyKey {
-    static var liveValue: FetchImageUseCaseClient {
+extension FetchImageUseCase: DependencyKey {
+    static var liveValue: FetchImageUseCase {
         @Dependency(\.imageRepositoryClient) var imageRepositoryClient
 
         return Self(
@@ -40,9 +40,9 @@ extension FetchImageUseCaseClient: DependencyKey {
     }
 }
 
-extension FetchImageUseCaseClient {
-    static func mock() -> FetchImageUseCaseClient {
-        return FetchImageUseCaseClient(
+extension FetchImageUseCase {
+    static func mock() -> FetchImageUseCase {
+        return FetchImageUseCase(
             fetchImage: { _ in
                 return ApiResponse(image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=")
             }
