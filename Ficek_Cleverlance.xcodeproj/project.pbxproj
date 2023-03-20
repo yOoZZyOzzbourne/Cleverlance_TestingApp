@@ -165,7 +165,9 @@
 			children = (
 				F00AAF2029A03A92006A3D84 /* ImageRepository.swift */,
 				F0AF75CD29A119BF00FA50BF /* ApiResponse.swift */,
-				F0E0A98D29A95254004760E7 /* Dependencies */,
+				F0E0A98E29A9526A004760E7 /* RequestBuilderClient.swift */,
+				F0E0A99029A95288004760E7 /* APIClient.swift */,
+				F0E0A99229A9529D004760E7 /* SecurityClient.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -212,16 +214,6 @@
 			children = (
 			);
 			path = UITests;
-			sourceTree = "<group>";
-		};
-		F0E0A98D29A95254004760E7 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				F0E0A98E29A9526A004760E7 /* RequestBuilderClient.swift */,
-				F0E0A99029A95288004760E7 /* APIClient.swift */,
-				F0E0A99229A9529D004760E7 /* SecurityClient.swift */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
